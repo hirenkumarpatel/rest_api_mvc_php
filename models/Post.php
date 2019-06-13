@@ -82,6 +82,35 @@ class Post{
 
     }
 
+     //update new post
+     public function update()
+     {
+         $query='UPDATE post SET title=?,body=?,author=? WHERE id=?';
+         
+         //prepare statement and bind params
+         $stmt=$this->connect->prepare($query);
+ 
+ 
+         // sanitize our data
+         $this->id=htmlspecialchars($this->id);
+         $this->title=htmlspecialchars(strip_tags($this->title));
+         $this->body=htmlspecialchars($this->body);
+         $this->author=htmlspecialchars(strip_tags($this->author));
+         
+         $stmt->bind_param("sssi",$this->title,$this->body,$this->author,$this->id);
+ 
+         //execute prepare stmt
+         if($stmt->execute()){
+             return true;
+         }else{
+             printf('Error : %s',$stmt->error);
+             return false;
+         }
+ 
+ 
+     }
+ 
+
     //end of class
 }
 
