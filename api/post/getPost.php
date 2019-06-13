@@ -49,5 +49,8 @@ else{
     );
 }
 
-
+/**
+ * To run this API you need to enter data in following format
+ * http://localhost/rest_api_mvc/api/post/getpost.php
+ */
 ?>

@@ -15,7 +15,7 @@ $db= $database->connect();
 //Instatiate Post Object and passing connection to post model
 $post= new Post($db);
 
-//check if querystring $_GET['id'] set then set it or die
+//check if querystring $_GET['id'] set then set it or die ternary if operator used
 $post->id= isset($_GET['id'])?$_GET['id']:die();
 
 //creating array of posts
@@ -26,6 +26,7 @@ $post_array['data']=array();
 $post_array['data']=$post->get_post_single();
 
 //make json
+
 echo json_encode($post_array);
 
 
