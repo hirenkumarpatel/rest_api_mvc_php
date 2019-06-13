@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Rest API Post Model
+ * @author : Hiren Patel
+ */
 
 class Post{
     private $connect;
@@ -108,6 +111,25 @@ class Post{
          }
  
  
+     }
+
+     //delete post
+     public function delete(){
+
+        $query='DELETE FROM post WHERE id=?';
+        
+        //prepare stmt and bind data
+        $stmt=$this->connect->prepare($query);
+        $stmt->bind_param("i",$this->id);
+
+        //execute prepare stmt
+         if($stmt->execute()){
+            return true;
+        }else{
+            printf('Error : %s',$stmt->error);
+            return false;
+        }
+
      }
  
 
