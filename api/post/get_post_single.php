@@ -30,5 +30,10 @@ $post_array['data']=$post->get_post_single();
 echo json_encode($post_array);
 
 
+/**
+ * To run this API you need to enter data in following format
+ * http://localhost/rest_api_mvc/api/post/get_post_single.php?id=1
+ */
+
 
 ?>

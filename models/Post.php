@@ -6,6 +6,9 @@ class Post{
 
     //post variable
     public $id;
+    public $title;
+    public $body;
+    public $author;
     //creating contructor to db
     public function __construct($db)
     {
@@ -51,11 +54,36 @@ class Post{
         
         return $post_item;
     }
+
+    //create new post
+    public function create()
+    {
+        $query='INSERT INTO post(title,body,author)VALUES(?,?,?)';
+        
+        //prepare statement and bind params
+        $stmt=$this->connect->prepare($query);
+
+
+        // sanitize our data
+        $this->title=htmlspecialchars(strip_tags($this->title));
+        $this->body=htmlspecialchars($this->body);
+        $this->author=htmlspecialchars(strip_tags($this->author));
+        
+        $stmt->bind_param("sss",$this->title,$this->body,$this->author);
+
+        //execute prepare stmt
+        if($stmt->execute()){
+            return true;
+        }else{
+            printf('Error : %s',$stmt->error);
+            return false;
+        }
+
+
+    }
+
+    //end of class
 }
 
-/**
- * To run this API you need to enter data in following format
- * http://localhost/rest_api_mvc/api/post/get_post_single.php?id=1
- */
 
 ?>
