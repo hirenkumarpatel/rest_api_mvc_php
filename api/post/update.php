@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Rest API PHP MVC
+ *  Update Post
+ * @author : Hiren Patel
+ */
 //integrating database and models
 include_once '../../config/Database.php';
 include_once '../../models/Post.php';

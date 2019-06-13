@@ -1,4 +1,9 @@
 <?php
+/**
+ * Rest API PHP MVC
+ *  Post Model
+ * @author : Hiren Patel
+ */
 class Database
 {
     private $hostname='localhost';

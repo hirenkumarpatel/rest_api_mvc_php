@@ -1,6 +1,7 @@
 <?php
 /**
- * Rest API Post Model
+ * Rest API PHP MVC
+ *  Post Model
  * @author : Hiren Patel
  */
 
